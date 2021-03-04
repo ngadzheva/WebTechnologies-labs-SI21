@@ -4,7 +4,7 @@
 
 - HTML Forms
 - Types of HTTP Requests
-- - Difference between Get and Post requests
+  - Difference between Get and Post requests
 - Semantic HTML demo
 
 ## Slides
