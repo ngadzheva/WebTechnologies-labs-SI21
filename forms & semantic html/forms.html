@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/> 
+        <title>Forms Demo</title>
+    </head>
+    <body>
+        <form method="post" action=".">
+            <label for="course-title"> Course Title </label>
+            <input id="course-title" name="title" pattern="[a-zA-Z]"/>
+            <label for="password"> Password </label>
+            <input id="password" name="password" type="password" required/>
+            <label for="radio"> Radio </label>
+            <input id="radio" name="radio" type="radio"/>
+            <label for="checkbox"> Checkbox </label>
+            <input id="checkbox" name="checkbox" type="checkbox"/>
+            <textarea></textarea>
+            <!-- <button disabled> Submit </button> -->
+            <input type="submit" value="Send"/>
+        </form>
+
+        <form method="post">
+            <h3>Registration</h3>
+            <fieldset>
+                <legend>Account Info</legend>
+                <label for="username">Username</label>
+                <input id="username" name="username" type="text"/>
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password"/>
+                <label for="confirm-password">Confirm Password</label>
+                <input id="confirm-password" name="confirm-password" type="password"/>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email"/>
+            </fieldset>
+            <fieldset>
+                <legend>Personal Info</legend>
+                <label for="first-name">First Name</label>
+                <input id="first-name" name="first-name" type="text"/>
+                <label for="last-name">Last Name</label>
+                <input id="last-name" name="last-name" type="text"/>
+                <label for="age">Age</label>
+                <input id="age" name="age" type="number"/>
+                <label for="male">Male</label>
+                <input id="male" name="male" type="radio"/>
+                <label for="female">Female</label>
+                <input id="female" name="female" type="radio"/>
+            </fieldset>
+            <input type="submit" value="Register"/>
+        </form>
+
+        <form>
+            <fieldset>
+              <legend> Register </legend>
+              <label> Username <input placeholder="John Smith"> </label>
+              <label> Password <input type="password">          </label>
+              <label> Email    <input type="email" placeholder="a@a.com"> </label>
+              Gender
+              <label> Male   <input type="radio" name="gender" value="M"> </label>
+              <label> Female <input type="radio" name="gender" value="F"> </label>
+              Age Group
+              <select>
+                <option value="1"> Kid (0-12) </option>
+                <option value="2"> Teen (13-19) </option>
+                <option value="3"> Adult (20+) </option>
+              </select>
+            </fieldset>
+        </form>
+
+        <h4> HTML5 Autocomplete with datalist </h4>
+        <input list="browsers">
+        <datalist id="browsers">
+            <option value="Internet Explorer">
+            <option value="Firefox">
+            <option value="Chrome">
+            <option value="Opera">
+            <option value="Safari">
+        </datalist>
+        <h4> New input types </h4>
+        <label> Range  <input type="range" min="0" max="100"> </label>
+        <label> Search <input type="search"> </label>
+        <label> Color  <input type="color">  </label>
+        <label> Date   <input type="date">   </label>
+    </body>
+</html>
