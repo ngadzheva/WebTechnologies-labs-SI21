@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset='utf-8'/>
+
+        <title>Students</title>
+
+        <script defer src="index.js"></script>
+    </head>
+
+    <body>
+        <main>
+            <section>
+                <header>Students</header>
+
+                <table>
+                    <thead>
+                        <tr id='header-row'>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Faculty Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class='student'>
+                            <td id='first-name'>Ivan</td>
+                            <td id='last-name'>Ivanov</td>
+                            <td id='fn'>88888</td>
+                            <td id='delete'><button>Delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <header>Add New Student</header>
+
+                <fieldset>
+                    <legend>Add Student's Mark</legend>
+                    <form class='student'>
+                        <label for='first-name'>First Name</label>    
+                        <input type='text' name='first-name'/>
+                        <label for='last-name'>Last Name</label>    
+                        <input type='text' name='last-name'/>
+                        <label for='fn'>Faculty Number</label>    
+                        <input type='number' name='fn'/>
+                        <label for='mark'>Mark</label>    
+                        <input type='number' name='mark'/>
+                        <input type='submit' name='add' value='Add'/>
+                    </form>    
+                </fieldset>
+            </section>
+        </main>
+    </body>
+</html>
