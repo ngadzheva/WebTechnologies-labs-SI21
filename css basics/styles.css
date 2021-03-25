@@ -1,0 +1,92 @@
+@import 'css-reset.css';
+
+body {
+    color: red;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('https://www.drawingforall.net/wp-content/uploads/2018/01/how-to-draw-chibi-cat-for-kids.jpeg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+p {
+    color: #000;
+}
+
+#article1 {
+    width: 250px;
+    text-align: justify;
+    position: relative;
+}
+
+.author {
+    color: rgb(0, 255, 0);
+}
+
+#article1 h2 {
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+#article1 > h2 {
+    font-weight: bold;
+    font-size: 30px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+article + section {
+    width: 150px;
+    border: 10px dotted hsl(0, 100%, 50%);
+    padding: 15px;
+    margin: 20px;
+    background-color: rgba(247, 247, 0, 0.5);
+}
+
+article ~ section {
+    width: 250px;
+    border-color: hsla(200, 50%, 60%, 1);
+    border-style: dashed;
+    border-width: 15px;
+    border-radius: 10px;
+}
+
+section:nth-of-type(2) {
+    padding-top: 20px;
+    margin: 15px 20px;
+}
+
+section:nth-of-type(3) {
+    padding: 10px 25px;
+}
+
+h1, h2, .copyright {
+    color: purple;
+}
+
+.author.copyright {
+   position: relative;
+   color: orange;
+   float: right;
+   width: 100px; 
+}
+
+#article1:after {
+    content: '';
+    clear: both;
+    display: block;
+}
+
+main {
+    position: relative;
+}
+
+#article3 {
+    position: absolute;
+    top: 20px;
+}
+
+p:last-of-type {
+    /* visibility:hidden; */
+    display: none;
+}
