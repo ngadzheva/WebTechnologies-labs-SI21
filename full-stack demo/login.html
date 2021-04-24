@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta chareset="utf-8"/>
+
+        <title>Demo</title>
+
+        <script defer src="scripts/login.js"></script>
+        <link rel="stylesheet" href="styles/styles.css"/>
+    </head>
+
+    <body>
+        <!-- This is our login page -->
+        <header>
+            <nav>
+                <!-- TODO: Implement registration login -->
+                <a href="registration.html">Registration</a>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <header id="main-header">Login</header>
+
+                <fieldset>
+                    <form id="login-form">
+                        <!-- Here we will add the validation errors that we found -->
+                        <label id="errors"></label>
+                        <label for="user-name">User Name</label>
+                        <input type="text" id="user-name" name="userName"/>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password"/>
+                        <input type="checkbox" id="remember-me"/>
+                        <label for="remember-me">Remember me</label>
+                        <input type="submit" id="login" value="Login"/>
+                    </form>
+                </fieldset>
+            </section>
+        </main>
+    </body>
+</html>
