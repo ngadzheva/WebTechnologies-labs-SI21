@@ -30,9 +30,20 @@
                 $_SESSION['email'] = $user->getEmail();
                 $_SESSION['userId'] = $user->getUserId();
 
-                if ($data['remember']) {
-                    // Create cookie for remembering the user
-                }
+                $tokenUtility = new TokenUtility();
+                $token = bin2hex(random_bytes(8));
+                $epxires = time() + 30 * 24 * 60 * 60;
+                setcookie('token', $token, $expires, '/');
+                $tokenUtility->createToken($token, $_SESSION['userId'], $expires);
+
+                // if ($data['remember']) {
+                //     // Create cookie for remembering the user
+                //     $tokenUtility = new TokenUtility();
+                //     $token = bin2hex(random_bytes(8));
+                //     $epxires = time() + 30 * 24 * 60 * 60;
+                //     setcookie('token', $token, $expires, '/');
+                //     $tokenUtility->createToken($token, $_SESSION['userId'], $expires);
+                // }
             } else {
                 $erros[] = $isValid['error'];
             }

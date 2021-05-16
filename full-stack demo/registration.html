@@ -7,22 +7,21 @@
         <title>Demo</title>
 
         <script defer src="scripts/sendRequestUtility.js"></script>
-        <script defer src="scripts/login.js"></script>
+        <script defer src="scripts/registration.js"></script>
         <link rel="stylesheet" href="styles/styles.css"/>
     </head>
 
     <body>
-        <!-- This is our login page -->
+        <!-- This is our user's dashboard page -->
         <header>
             <nav>
-                <!-- TODO: Implement registration login -->
-                <a href="registration.html">Registration</a>
+                <a href="login.html">Login</a>
             </nav>
         </header>
 
         <main>
             <section>
-                <header id="main-header">Login</header>
+                <header id="main-header">Register</header>
 
                 <fieldset>
                     <form id="login-form">
@@ -32,9 +31,11 @@
                         <input type="text" id="user-name" name="userName"/>
                         <label for="password">Password</label>
                         <input type="password" id="password" name="password"/>
-                        <input type="checkbox" id="remember-me"/>
-                        <label for="remember-me">Remember me</label>
-                        <input type="submit" id="login" value="Login"/>
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password"/>
+                        <label for="email">Email</label>
+                        <input type="text" id="email" name="email"/>
+                        <input type="submit" id="register" value="Register"/>
                     </form>
                 </fieldset>
             </section>

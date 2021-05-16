@@ -9,6 +9,8 @@
         private $insertToken;
         private $selectToken;
         private $selectUserById;
+        private $insertUser;
+        private $selectStudentsWithMarks;
 
         public function __construct() {
             $config = parse_ini_file('../config/config.ini', true);
@@ -57,6 +59,22 @@
 
             $sql = "SELECT * FROM tokens WHERE token=:token";
             $this->selectToken = $this->connection->prepare($sql);
+
+            $sql = "INSERT INTO users(username, password, email) VALUES (:username, :password, :email)";
+            $this->insertUser = $this->connection->prepare($sql);
+
+            $sql = "SELECT firstName, lastName, fn, mark FROM students JOIN marks ON fn = studentFN";
+            $this->selectStudentsWithMarks = $this->connection->prepare($sql);
+        }
+
+        public function selectStudentsWithMarksQuery() {
+            try {
+                $this->selectStudentsWithMarksQuery->execute();
+
+                return ["success" => true];
+            } catch(PDOException $e) {
+                return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
+            }
         }
 
         // $data -> ["fn" => value, "mark" => value]
@@ -160,6 +178,17 @@
                 echo "Connection failed: " . $e->getMessage();
 
                 return array("success" => false, "error" => $e->getMessage());
+            }
+        }
+
+        public function insertUserQuery($data) {
+            try {
+                $this->insertUser->execute($data);
+
+                return ["success" => true];
+            } catch(PDOException $e) {
+                $this->connection->rollBack();
+                return ["success" => false, "error" => "Connection failed: " . $e->getMessage()];
             }
         }
 

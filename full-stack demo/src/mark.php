@@ -57,5 +57,15 @@
         public function addMark() {
             $query = $this->db->insertMark(["fn" => $this->studentFn, "mark" => $this->mark]);
         }
+
+        public function getAllMarksWithStudents() {
+            $query = $this->db->selectStudentsWithMarksQuery();
+
+            if ($query["success"]) {
+                return $query["data"]->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return $query;
+            }
+        }
     }
 ?>

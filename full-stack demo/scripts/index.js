@@ -12,6 +12,7 @@
      logoutBtn.addEventListener('click', logout);
 
     // TODO: Send request for getting all students' marks
+    sendRequest('src/index.php/students', {method: 'GET'}, loadStudents, console.log);
 })();
 
 function sendForm(event) {
@@ -29,25 +30,7 @@ function sendForm(event) {
         mark
     };
 
-    sendRequest('index.php', 'POST', `data=${JSON.stringify(data)}`);
-}
-
-function sendRequest(url, method, data) { 
-    var request = new XMLHttpRequest();
-
-    request.addEventListener('load', function() { 
-        var response = JSON.parse(request.responseText);
-
-        if (request.status === 200) {
-            addStudentMark(response);
-        } else {
-            handleErrors(response);
-        }
-    });
-
-    request.open(method, url, true);
-    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    request.send(data);
+    sendRequest('src/index.php/addStudent', 'POST', `data=${JSON.stringify(data)}`, addStudentMark, handleErrors);
 }
 
 function addStudentMark(studentData) {
@@ -61,6 +44,17 @@ function addStudentMark(studentData) {
     });
 
     studentTable.appendChild(tr);
+}
+
+function loadStudents(studentsData) {
+    if (studentsData['success']) {
+        studentsData['data'].forEach(function (student) {
+            addStudentMark(student);
+        });
+    } else {
+        console.log(studentsData['data']);
+        window.location = 'login.html';
+    }
 }
 
 function handleErrors(errors) {
@@ -83,15 +77,15 @@ function handleErrors(errors) {
     /**
      * Prevent the default behavior of the clicking the form submit button
      */
-
+    event.preventDefault();
 
     /**
      * Send GET request to api.php/logout to logout the user
      */
+    sendRequest('src/logout.php', {method: 'GET'}, redirect, console.log);
 
+}
 
-    /**
-     * Redirect to home page
-     */
-
+function redirect() {
+    window.location = 'login.html';
 }

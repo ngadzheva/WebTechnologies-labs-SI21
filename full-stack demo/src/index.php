@@ -6,19 +6,54 @@
     $errors = [];
     $response = [];
 
-    if(isset($_GET)) {
-        // TODO: Get all students' marks and send them to the client
-    } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $data = json_decode($_POST['data'], true);
+    $requestUrl = $_SERVER['REQUEST_URI'];
 
-        $firstName = isset($data['firstName']) ? testInput($data['firstName']) : '';
-        $lastName = isset($data['lastName']) ? testInput($data['lastName']) : '';
-        $fn = isset($data['fn']) ? testInput($data['fn']) : 0;
-        $mark = isset($data['mark']) ? testInput($data['mark']) : 0;
+    if(preg_match("/students$/", $requestUrl)) {
+        if ($_SESSION) {
+            if ($_SESSION['username']) {
+                $mark = new Mark(0, 0);
+                $marks = $mark->getAllMarksWithStudents();
 
-        validateData($data);
+                echo json_encode(['success' => true, 'data' => $marks);
+            } else {
+                echo json_encode(['success' => false, 'data' => 'Unauthorized']);
+            }
+        } else {
+            if ($_COOKIE['token']) {
+                $tokenUtility = new TokenUtility();
+                $isValid = $tokenUtility->checkToken($_COOKIE['token']);
+
+                if ($isValid) {
+                    $_SESSION['username'] = $isValid['user']->getUsername();
+                    $_SESSION['userId'] = $isValid['user']->getUserId();
+                    $_SESSION['email'] = $isValid['user']->getEmail();
+
+                    $mark = new Mark(0, 0);
+                    $marks = $mark->getAllMarksWithStudents();
+
+                    echo json_encode(['success' => true, 'data' => $marks);
+                } else {
+                    echo json_encode(['success' => false, 'data' => $isValid['error']]);
+                }
+            } else {
+                echo json_encode(['success' => false, 'data' => 'Session expired']);
+            }
+        }
+    } else if (preg_match("/addStudent$/", $requestUrl)) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = json_decode($_POST['data'], true);
+
+            $firstName = isset($data['firstName']) ? testInput($data['firstName']) : '';
+            $lastName = isset($data['lastName']) ? testInput($data['lastName']) : '';
+            $fn = isset($data['fn']) ? testInput($data['fn']) : 0;
+            $mark = isset($data['mark']) ? testInput($data['mark']) : 0;
+
+            validateData($data);
+        } else {
+            $errors[] = 'Invalid request.';
+        }
     } else {
-        $errors[] = 'Invalid request';
+        $errors[] = 'Invalid endpoint';
     }
 
     if ($errors) {
