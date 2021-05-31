@@ -8,5 +8,6 @@
 - Cookies
 
 ## Labs Recordings
-[MVC app](https://drive.google.com/file/d/1P-vCoNSYzj3PJ2TDb_CibX9XopwSnK5V/view?usp=sharing)
-[Auth](https://drive.google.com/file/d/1GQOZdZIF7bH1dC7y5R1Fnwv9qcm0F-em/view?usp=sharing)
+- [MVC app](https://drive.google.com/file/d/1P-vCoNSYzj3PJ2TDb_CibX9XopwSnK5V/view?usp=sharing)
+- [Auth](https://drive.google.com/file/d/1GQOZdZIF7bH1dC7y5R1Fnwv9qcm0F-em/view?usp=sharing)
+- [Sessions & Cookies](https://drive.google.com/file/d/1mErPkLQA4C3rWpYN0_BUG3Azeu-2lN04/view?usp=sharing)
